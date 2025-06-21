@@ -66,7 +66,7 @@ def printAllBookedSeats():
             if Data.isAvailable(i, j):
                 print("▢", end="  ")
             else:
-                print("▣", end="  ")
+                print(YELLOW+ "▣" + RESET, end="  ")
                 
         print(f"|   {i}")
         
@@ -166,6 +166,7 @@ def CancelTicketPage():
     if not Data.isAvailable(row, seat):
         if (row, seat) in user["seats"]:
             if Data.cancelASeat(row, seat):
+                user["seats"].remove((row, seat))
                 print(GREEN + "The reservation was successfully canceled" + RESET)
         else:
             print(RED+"You do not have the authority to cancel this seat" + RESET)
